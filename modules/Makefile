@@ -15,6 +15,7 @@ obj-m += usbled/
 obj-m += netfilter/
 obj-m += klogger/
 obj-m += thumbee/
+obj-m += qtouch_obp_ts/
 
 # mb525/mb526 specific
 obj-m += proximity/

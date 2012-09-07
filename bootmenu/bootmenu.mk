@@ -105,4 +105,12 @@ PRODUCT_COPY_FILES += \
 	out/target/product/jordan/recovery/root/sbin/tune2fs:system/bootmenu/recovery/sbin/tune2fs \
 	out/target/product/jordan/recovery/root/sbin/mke2fs:system/bootmenu/recovery/sbin/mke2fs.bin \
 	out/target/product/jordan/recovery/root/sbin/pigz:system/bootmenu/recovery/sbin/pigz \
+	
+# B2G(copied from squisher.sh)
+PRODUCT_COPY_FILES += \
+	out/target/product/jordan/root/init:system/bootmenu/2nd-init/init \
+	out/target/product/jordan/root/init.b2g.rc:system/bootmenu/2nd-init/init.b2g.rc \
+	out/target/product/jordan/utilities/busybox:system/bootmenu/binary/busybox \
+	out/target/product/jordan/utilities/lsof:system/bootmenu/binary/lsof \
+	out/target/product/jordan/system/lib/hw/audio.a2dp.default.so:system/lib/liba2dp.so \
 
