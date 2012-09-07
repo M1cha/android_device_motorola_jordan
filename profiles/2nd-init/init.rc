@@ -1,5 +1,6 @@
 on early-init
     start ueventd
+    import /init.b2g.rc
 
 on init
     loglevel 3
@@ -94,6 +95,9 @@ on init
 
 on fs
     log "== init.rc: on fs -------------------------"
+    chmod 0755 /system/b2g/b2g
+    chmod 0755 /system/b2g/updater
+    chmod 0755 /system/b2g/plugin-container
 
 on post-fs
     log "== init.rc: on post-fs --------------------"

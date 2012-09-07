@@ -60,7 +60,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
 	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
+	
+	#packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
 
 # ICS sound
 PRODUCT_PACKAGES += \
@@ -104,8 +105,8 @@ PRODUCT_PACKAGES += libfnc DefyParts Usb HwaSettings
 PRODUCT_PACKAGES += charge_only_mode mot_boot_mode lights.jordan sensors.jordan
 
 # Publish that we support the live wallpaper feature.
-PRODUCT_PACKAGES += LiveWallpapers LiveWallpapersPicker MagicSmokeWallpapers MotoFM
-PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
+#PRODUCT_PACKAGES += LiveWallpapers LiveWallpapersPicker MagicSmokeWallpapers MotoFM
+#PRODUCT_PACKAGES += VisualizationWallpapers librs_jni
 
 # Add DroidSSHd (dropbear) Management App - tpruvot/android_external_droidsshd @ github
 PRODUCT_PACKAGES += DroidSSHd dropbear dropbearkey sftp-server scp ssh rsync
