@@ -9,9 +9,6 @@
 # Remove big videos
 rm -f $REPACK/ota/system/media/video/*.480p.mp4
 
-# Smaller and smoother bootanimation
-#cp -f $DEVICE_TOP/prebuilt/bootanimation.zip $REPACK/ota/system/media/bootanimation.zip
-
 # these scripts are not required or bad
 rm -f $REPACK/ota/system/etc/init.d/04modules
 
@@ -48,3 +45,5 @@ cp -f $DEVICE_OUT/utilities/lsof $REPACK/ota/system/bootmenu/binary/lsof
 # ril fix
 cp -f $REPACK/ota/system/lib/hw/audio.a2dp.default.so $REPACK/ota/system/lib/liba2dp.so
 
+# b2g
+cp -f $DEVICE_OUT/root/init.b2g.rc $REPACK/ota/system/bootmenu/2nd-init/init.b2g.rc
