@@ -6,18 +6,11 @@
 # DEVICE_TOP=$ANDROID_BUILD_TOP/device/motorola/jordan
 # VENDOR_TOP=$ANDROID_BUILD_TOP/vendor/motorola/jordan
 
-# Delete unwanted apps
-rm -f $REPACK/ota/system/app/RomManager.apk
-rm -f $REPACK/ota/system/app/VideoEditor.apk
-
 # Remove big videos
 rm -f $REPACK/ota/system/media/video/*.480p.mp4
 
 # Smaller and smoother bootanimation
 #cp -f $DEVICE_TOP/prebuilt/bootanimation.zip $REPACK/ota/system/media/bootanimation.zip
-
-# Apk required, (forbidden in product copy files in ics)
-cp -f $VENDOR_TOP/app/* $REPACK/ota/system/app/
 
 # these scripts are not required or bad
 rm -f $REPACK/ota/system/etc/init.d/04modules

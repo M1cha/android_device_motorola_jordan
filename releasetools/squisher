@@ -64,27 +64,12 @@ cd $REPACK/ota
 printf "Unpacking $OTAPACKAGE..."
 unzip $QUIET $OTAPACKAGE
 echo
-cd $REPACK/ota/system/framework
 )
 
 # Include device specific script
 if [ -f $DEVICE_TOP/releasetools/squisher.sh ]; then
        . $DEVICE_TOP/releasetools/squisher.sh
 fi
-
-if [ "$1" != "fast" ]; then
-	$OPTICHARGER framework-res.apk
-	cd $REPACK/ota/system/app
-	find ./ -name \*.apk | $XARGS $OPTICHARGER
-else
-	echo "skipping apk optimization"
-fi
-
-# Fix build.prop
-$SED -i \
-	-e '/ro\.kernel\.android\.checkjni/d' \
-	-e '/ro\.build\.type/s/eng/user/' \
-	$REPACK/ota/system/build.prop
 
 # Delete unnecessary binaries
 if [ -n "$DELETE_BINS" ]; then
@@ -105,16 +90,7 @@ cd $REPACK
 		-not -name "overclock*" \
 		-not -name "tiap*" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 
-# Determine what to name the new signed package
-#MODVERSION=`sed -n -e'/ro\.cm\.version/s/^.*=//p' $REPACK/ota/system/build.prop`
-MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
-MODVERSION=`echo $MODVERSION | sed 's/CyanogenMod-//'`
-
-OUTFILE=$OUT/cm-$MODVERSION.zip
-
-if [ -n "$CM_NIGHTLY" ]; then
-	OUTFILE=$OUT/CM$MODVERSION.zip
-fi
+OUTFILE=$OUT/b2g.zip
 
 # Pack it up and sign
 echo "Zipping package..."
@@ -122,7 +98,7 @@ echo "Zipping package..."
 echo
 echo "Signing package..."
 SECURITYDIR=$ANDROID_BUILD_TOP/build/target/product/security
-java -Xmx768m \
+$JAVA_HOME_REAL/bin/java -Xmx768m \
 	-jar $ANDROID_BUILD_TOP/out/host/$OUT_TARGET_HOST/framework/signapk.jar \
 	-w $SECURITYDIR/testkey.x509.pem $SECURITYDIR/testkey.pk8 \
 	$REPACK/update.zip $OUTFILE
