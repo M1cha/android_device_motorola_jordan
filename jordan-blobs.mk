@@ -65,7 +65,6 @@ PRODUCT_COPY_FILES += \
 # New CM9 backup list system (addon.d)
 PRODUCT_COPY_FILES += \
 	${device_path}/releasetools/addon.d/60-baseband.sh:system/addon.d/60-baseband.sh \
-	${device_path}/releasetools/addon.d/70-gapps.sh:system/addon.d/70-gapps.sh \
 
 # Backup kernel modules and bootmenu overclock config
 ifndef CM_RELEASE
@@ -74,5 +73,9 @@ PRODUCT_COPY_FILES += \
 	${device_path}/releasetools/addon.d/70-modules.sh:system/addon.d/70-modules.sh \
 
 endif
+
+# init.d support
+PRODUCT_COPY_FILES += \
+   $(DEVICE_PREBUILT)/bin/sysinit:system/bin/sysinit
 
 #end of jordan-blobs.mk

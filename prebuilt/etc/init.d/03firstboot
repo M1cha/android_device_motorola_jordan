@@ -1,30 +1,20 @@
 #!/system/xbin/ash
 #
-# load adbd during first boot if property is set
+# copy initial data-partition contents
 
-if [ -f /system/firstboot ]; then
+if [ ! -f /data/firstboot.done ]; then
 
-    busybox mount -o remount,rw /system
-    rm -f /system/firstboot
+    # copy initial data-setup
+    rm -rf /cache/*
+    rm -Rf /data/local/webapps
+    rm -f /data/local/user.js
+    cp -Rf /system/initial-data/* /data/
 
-    # Clean market cache
-    rm -f /data/data/com.android.providers.downloads/cache/*
+    # write to disk
+    sync
 
-    #DISABLED:
-    exit 0
-
-    LOAD_ADBD=`getprop persist.service.adb.enable`
-    USB_LINK=`cat /sys/class/power_supply/usb/online`
-
-    if [ "$LOAD_ADBD $USB_LINK" = "1 1" ]; then
-
-        echo charge_adb > /dev/usb_device_mode
-
-        # set initial state for usb.apk
-        echo usb_mode_charge_adb > /tmp/usbd_current_state
-        chmod 666 /tmp/usbd_current_state
-
-    fi
-
+    # mark setup as done
+    touch /data/firstboot.done
+    
 fi
 

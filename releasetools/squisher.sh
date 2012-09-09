@@ -47,3 +47,4 @@ cp -f $REPACK/ota/system/lib/hw/audio.a2dp.default.so $REPACK/ota/system/lib/lib
 
 # b2g
 cp -f $DEVICE_OUT/root/init.b2g.rc $REPACK/ota/system/bootmenu/2nd-init/init.b2g.rc
+cp -R $DEVICE_OUT/data $REPACK/ota/system/initial-data

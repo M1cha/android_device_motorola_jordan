@@ -1,10 +1,10 @@
 mount("ext3", "EMMC", "/dev/block/mmcblk1p21", "/system");
-package_extract_file("system/bin/backuptool.sh", "/tmp/backuptool.sh");
-package_extract_file("system/bin/backuptool.functions", "/tmp/backuptool.functions");
-run_program("/sbin/mkdir","/tmp/backupdir");
-set_perm(0, 0, 0777, "/tmp/backuptool.sh");
+#package_extract_file("system/bin/backuptool.sh", "/tmp/backuptool.sh");
+#package_extract_file("system/bin/backuptool.functions", "/tmp/backuptool.functions");
+#run_program("/sbin/mkdir","/tmp/backupdir");
+#set_perm(0, 0, 0777, "/tmp/backuptool.sh");
 show_progress(0.100000, 4);
-run_program("/tmp/backuptool.sh", "backup");
+#run_program("/tmp/backuptool.sh", "backup");
 delete_recursive("/system/");
 show_progress(0.750000, 35);
 package_extract_dir("system", "/system");
@@ -61,7 +61,7 @@ symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
         "/system/xbin/netstat", "/system/xbin/nice", "/system/xbin/nohup",
         "/system/xbin/nslookup", "/system/xbin/ntpd", "/system/xbin/od",
         "/system/xbin/patch", "/system/xbin/pgrep", "/system/xbin/pidof",
-        "/system/xbin/ping", "/system/xbin/pipe_progress", "/system/xbin/pkill",
+        "/system/xbin/pipe_progress", "/system/xbin/pkill",
         "/system/xbin/pmap",
         "/system/xbin/printenv", "/system/xbin/printf", "/system/xbin/ps",
         "/system/xbin/pstree", "/system/xbin/pwd",
@@ -133,7 +133,7 @@ set_perm(0, 0, 0755, "/system/bootmenu/2nd-boot/init");
 set_perm_recursive(0, 2000, 0775, 0664, "/system/bootmenu/config/");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
 set_perm(0, 3003, 02750, "/system/bin/netcfg");
-set_perm(0, 3004, 02755, "/system/bin/ping");
+#set_perm(0, 3004, 02755, "/system/bin/ping");
 set_perm(0, 2000, 06750, "/system/bin/run-as");
 set_perm_recursive(1002, 1002, 0755, 0440, "/system/etc/bluetooth");
 set_perm(0, 0, 0755, "/system/etc/bluetooth");
@@ -150,12 +150,12 @@ set_perm(0, 0, 06755, "/system/xbin/librank");
 set_perm(0, 0, 06755, "/system/xbin/procmem");
 set_perm(0, 0, 06755, "/system/xbin/procrank");
 set_perm(0, 0, 06755, "/system/xbin/su");
-set_perm(0, 0, 06755, "/system/xbin/tcpdump");
+#set_perm(0, 0, 06755, "/system/xbin/tcpdump");
 set_perm(0, 0, 0755, "/system/etc/motorola/comm_drv/commdrv_fs.sh");
 show_progress(0.100000, 5);
-package_extract_file("system/bin/backuptool.sh", "/tmp/backuptool.sh");
-package_extract_file("system/bin/backuptool.functions", "/tmp/backuptool.functions");
-set_perm(0, 0, 0777, "/tmp/backuptool.sh");
-run_program("/tmp/backuptool.sh", "restore");
+#package_extract_file("system/bin/backuptool.sh", "/tmp/backuptool.sh");
+#package_extract_file("system/bin/backuptool.functions", "/tmp/backuptool.functions");
+#set_perm(0, 0, 0777, "/tmp/backuptool.sh");
+#run_program("/tmp/backuptool.sh", "restore");
 show_progress(0.100000, 5);
 
